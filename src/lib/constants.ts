@@ -59,7 +59,7 @@ export const DESTINATIONS = [
     region: "Costa Rica",
     blurb: "Hammerheads in schools. Pelagic energy, remote water.",
     image:
-      "https://images.unsplash.com/photo-1582967788606-a171f1080ed4?auto=format&fit=crop&w=1600&q=80",
+      "https://images.unsplash.com/photo-1559825481-12a05cc00344?auto=format&fit=crop&w=1600&q=80",
   },
   {
     name: "Tubbataha",
