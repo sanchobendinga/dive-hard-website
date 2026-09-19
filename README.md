@@ -29,7 +29,7 @@ npm start
 | `/` | Landing — hero, about, Watch grid, destinations, newsletter, merch + course teases |
 | `/join` | Newsletter signup page |
 | `/merch` | Placeholder products + notify interest |
-| `/api/subscribe` | POST `{ email, source? }` → appends to `data/subscribers.json` |
+| `/api/subscribe` | POST `{ email, source? }` → Google Sheet via Apps Script webhook (local JSON fallback in dev) |
 
 Homepage Watch order (exact YouTube IDs):
 
@@ -46,51 +46,20 @@ Homepage Watch order (exact YouTube IDs):
 
 ## Newsletter storage
 
-Emails are stored in `data/subscribers.json` (empty `[]` committed). The API creates/updates the file on signup. `source` is recorded (`home-newsletter`, `join-page`, `merch`, etc.).
+**Source of truth:** Google Sheet titled **Dive Hard — Email list** (Sheet ID `1PYrNDAmtKJ8Sz7gtOThPrjKTciAtJSpg8emSCfh37Ks`).
 
-### Swap to Buttondown / ConvertKit / Resend later
+Signups POST to `/api/subscribe` with `{ email, source? }`. In production the route forwards `{ secret, email, source }` to a Google Apps Script webhook, which appends a row to the Sheet. `source` is recorded (`home-newsletter`, `join-page`, `merch`, etc.). Duplicate emails (webhook `message` containing “already”) return the same success UX as a new signup.
 
-Replace the body of `src/app/api/subscribe/route.ts` with a provider call. Sketch:
+### Environment variables
 
-**Buttondown**
+Set these in `.env.local` (local) or your host’s env (e.g. Vercel). Never commit real secrets. See `.env.example`.
 
-```ts
-await fetch("https://api.buttondown.email/v1/subscribers", {
-  method: "POST",
-  headers: {
-    Authorization: `Token ${process.env.BUTTONDOWN_API_KEY}`,
-    "Content-Type": "application/json",
-  },
-  body: JSON.stringify({ email, tags: [source] }),
-});
-```
+| Variable | Purpose |
+|----------|---------|
+| `SHEETS_WEBHOOK_URL` | Apps Script web app URL |
+| `SHEETS_WEBHOOK_SECRET` | Shared secret the script expects in the JSON body |
 
-**ConvertKit**
-
-```ts
-await fetch(`https://api.convertkit.com/v3/forms/${process.env.CONVERTKIT_FORM_ID}/subscribe`, {
-  method: "POST",
-  headers: { "Content-Type": "application/json" },
-  body: JSON.stringify({
-    api_key: process.env.CONVERTKIT_API_KEY,
-    email,
-    tags: [source],
-  }),
-});
-```
-
-**Resend Audiences**
-
-```ts
-import { Resend } from "resend";
-const resend = new Resend(process.env.RESEND_API_KEY);
-await resend.contacts.create({
-  email,
-  audienceId: process.env.RESEND_AUDIENCE_ID!,
-});
-```
-
-Keep the same request/response shape so `NewsletterForm` does not need changes. Add secrets to `.env.local` (never commit).
+Both are **required in production**. In development, if either is missing, the API falls back to appending `data/subscribers.json` (empty `[]` committed) so local signup still works without the webhook.
 
 ## Image attribution (Unsplash)
 
@@ -103,7 +72,8 @@ Suggested credit line if you publish publicly:
 
 ## Deploy notes
 
-- File-based `subscribers.json` works on a persistent disk (VPS, Docker volume). On serverless (Vercel), swap to an ESP or database before going live.
+- Set `SHEETS_WEBHOOK_URL` and `SHEETS_WEBHOOK_SECRET` on the host before going live; production will not accept signups without them.
+- Local `data/subscribers.json` is a development fallback only — do not rely on it on serverless (Vercel).
 - Set `metadataBase` / `SITE.url` in `src/lib/constants.ts` when the production domain is final.
 
 ## GitHub

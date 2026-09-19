@@ -42,3 +42,6 @@ next-env.d.ts
 
 # local subscriber store (optional — empty array is committed)
 # data/subscribers.json
+
+# keep example env template
+!.env.example
