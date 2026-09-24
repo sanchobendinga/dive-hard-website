@@ -1,15 +1,15 @@
 import Link from "next/link";
 import { SITE } from "@/lib/constants";
-import { Wordmark } from "./Wordmark";
+import { Logo } from "./Logo";
 
 export function Footer() {
   return (
-    <footer className="border-t border-border bg-navy-deep">
+    <footer className="border-t border-border bg-background">
       <div className="mx-auto grid max-w-6xl gap-10 px-4 py-14 sm:px-6 md:grid-cols-[1.4fr_1fr_1fr]">
         <div className="space-y-4">
-          <Wordmark size="sm" />
+          <Logo size="sm" invert />
           <p className="max-w-sm text-sm leading-relaxed text-muted">
-            Underwater cinema by {SITE.creator}. Small group expeditions, workshops, and the films that come with them.
+            Underwater cinema by {SITE.creator}. Films, the list, and merch when it&apos;s ready.
           </p>
         </div>
 
@@ -22,13 +22,13 @@ export function Footer() {
               </Link>
             </li>
             <li>
-              <Link href="/merch" className="focus-ring hover:text-foreground">
-                Merch
+              <Link href="/join" className="focus-ring hover:text-foreground">
+                Join
               </Link>
             </li>
             <li>
-              <Link href="/join" className="focus-ring hover:text-foreground">
-                Newsletter
+              <Link href="/merch" className="focus-ring hover:text-foreground">
+                Merch
               </Link>
             </li>
           </ul>
@@ -68,8 +68,10 @@ export function Footer() {
 
       <div className="border-t border-border">
         <div className="mx-auto flex max-w-6xl flex-col gap-2 px-4 py-6 text-xs text-muted sm:flex-row sm:items-center sm:justify-between sm:px-6">
-          <p>© {new Date().getFullYear()} Dive Hard · {SITE.creator}</p>
-          <p>Photography-led. Not a tourist dive shop.</p>
+          <p>
+            © {new Date().getFullYear()} Dive Hard · {SITE.creator}
+          </p>
+          <p>Editorial. Not a tourist dive shop.</p>
         </div>
       </div>
     </footer>

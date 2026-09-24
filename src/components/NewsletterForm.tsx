@@ -49,11 +49,11 @@ export function NewsletterForm({
   if (status === "success") {
     return (
       <div
-        className="rounded-2xl border border-teal/40 bg-navy/80 px-5 py-6 text-left"
+        className="rounded-none border border-foreground/30 bg-card px-5 py-6 text-left"
         role="status"
         aria-live="polite"
       >
-        <p className="text-sm font-semibold text-teal-bright">You&apos;re in.</p>
+        <p className="text-sm font-semibold text-foreground">You&apos;re in.</p>
         <p className="mt-1 text-sm text-chrome">{message}</p>
       </div>
     );
@@ -75,22 +75,22 @@ export function NewsletterForm({
           placeholder="you@email.com"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          className="focus-ring w-full rounded-full border border-border bg-background/60 px-5 py-3 text-sm text-foreground placeholder:text-muted"
+          className="focus-ring w-full border border-border bg-background px-5 py-3 text-sm text-foreground placeholder:text-muted"
         />
         <button
           type="submit"
           disabled={status === "loading"}
-          className="focus-ring shrink-0 rounded-full bg-teal px-6 py-3 text-sm font-semibold text-navy-deep transition hover:bg-teal-bright disabled:cursor-not-allowed disabled:opacity-70"
+          className="focus-ring btn-fill shrink-0 px-6 py-3 text-sm font-semibold transition disabled:cursor-not-allowed disabled:opacity-70"
         >
           {status === "loading" ? "Joining…" : cta}
         </button>
       </div>
       {status === "error" && (
-        <p className="text-sm text-red-300" role="alert">
+        <p className="text-sm text-chrome" role="alert">
           {message}
         </p>
       )}
-      <p className="text-xs text-muted">No spam. Trip dates, new films, merch drops.</p>
+      <p className="text-xs text-muted">No spam. New films and merch when ready.</p>
     </form>
   );
 }
