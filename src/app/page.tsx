@@ -9,7 +9,7 @@ export default function HomePage() {
     <>
       <section className="grain relative isolate border-b border-border">
         <div className="mx-auto flex min-h-[72vh] max-w-6xl flex-col justify-end px-4 pb-16 pt-24 sm:px-6 sm:pb-20 sm:pt-32">
-          <Logo size="lg" invert href={null} priority className="mb-10 max-w-full opacity-90" />
+          <Logo size="hero" href={null} className="mb-12" />
           <p className="section-eyebrow">
             Trip reports, small group expeditions and UW imaging workshops
           </p>

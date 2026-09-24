@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 export default function MerchPage() {
   return (
     <div className="mx-auto flex max-w-3xl flex-col items-center px-4 py-24 text-center sm:px-6 sm:py-32">
-      <Logo size="md" invert href={null} className="mb-10 max-w-full opacity-80" />
+      <Logo size="lg" href={null} className="mb-10" />
       <p className="section-eyebrow">Merch</p>
       <h1 className="mt-3 font-display text-4xl font-bold tracking-tight sm:text-5xl">
         Coming soon
