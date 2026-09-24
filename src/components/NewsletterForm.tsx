@@ -90,7 +90,7 @@ export function NewsletterForm({
           {message}
         </p>
       )}
-      <p className="text-xs text-muted">No spam. New films and merch when ready.</p>
+      <p className="text-xs text-muted">No spam.</p>
     </form>
   );
 }

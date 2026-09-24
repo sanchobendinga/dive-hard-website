@@ -19,7 +19,7 @@ const montserrat = Montserrat({
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
   title: {
-    default: "Dive Hard — Epic underwater cinema",
+    default: "Dive Hard",
     template: "%s · Dive Hard",
   },
   description: SITE.description,
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: SITE.url,
     siteName: SITE.name,
-    title: "Dive Hard — Epic underwater cinema",
+    title: "Dive Hard",
     description: SITE.description,
     images: [
       {
@@ -50,12 +50,12 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Dive Hard — Epic underwater cinema",
+    title: "Dive Hard",
     description: SITE.description,
     images: ["/brand/channel-header.png"],
   },
   icons: {
-    icon: "/brand/logo-dive-hard.png",
+    icon: "/brand/logo-dive-hard.svg",
     apple: "/brand/avatar.jpg",
   },
 };

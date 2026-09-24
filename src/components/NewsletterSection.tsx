@@ -7,11 +7,8 @@ export function NewsletterSection() {
         <div>
           <p className="section-eyebrow">Join</p>
           <h2 className="mt-3 max-w-xl font-display text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-            Get the films first.
+            Join the list
           </h2>
-          <p className="mt-4 max-w-lg text-base leading-relaxed text-muted">
-            Short notes from Kabir — new cuts, drops, and whatever else is actually worth an email.
-          </p>
         </div>
         <div className="border border-border bg-background p-6 sm:p-8">
           <NewsletterForm source="home-newsletter" compact />

@@ -8,9 +8,7 @@ export function Footer() {
       <div className="mx-auto grid max-w-6xl gap-10 px-4 py-14 sm:px-6 md:grid-cols-[1.4fr_1fr_1fr]">
         <div className="space-y-4">
           <Logo size="sm" invert />
-          <p className="max-w-sm text-sm leading-relaxed text-muted">
-            Underwater cinema by {SITE.creator}. Films, the list, and merch when it&apos;s ready.
-          </p>
+          <p className="max-w-sm text-sm leading-relaxed text-muted">{SITE.description}</p>
         </div>
 
         <div>
@@ -67,11 +65,10 @@ export function Footer() {
       </div>
 
       <div className="border-t border-border">
-        <div className="mx-auto flex max-w-6xl flex-col gap-2 px-4 py-6 text-xs text-muted sm:flex-row sm:items-center sm:justify-between sm:px-6">
+        <div className="mx-auto flex max-w-6xl px-4 py-6 text-xs text-muted sm:px-6">
           <p>
             © {new Date().getFullYear()} Dive Hard · {SITE.creator}
           </p>
-          <p>Editorial. Not a tourist dive shop.</p>
         </div>
       </div>
     </footer>
