@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { HeroBackground } from "@/components/HeroBackground";
 import { Logo } from "@/components/Logo";
 import { NewsletterSection } from "@/components/NewsletterSection";
 import { VideoCard } from "@/components/VideoCard";
@@ -7,10 +8,11 @@ import { SITE, VIDEOS } from "@/lib/constants";
 export default function HomePage() {
   return (
     <>
-      <section className="grain relative isolate border-b border-border">
-        <div className="mx-auto flex min-h-[72vh] max-w-6xl flex-col justify-end px-4 pb-16 pt-24 sm:px-6 sm:pb-20 sm:pt-32">
+      <section className="grain relative isolate overflow-hidden border-b border-border">
+        <HeroBackground />
+        <div className="relative z-10 mx-auto flex min-h-[72vh] max-w-6xl flex-col justify-end px-4 pb-16 pt-24 sm:px-6 sm:pb-20 sm:pt-32">
           <Logo size="hero" href={null} className="mb-12" />
-          <p className="section-eyebrow">
+          <p className="section-eyebrow text-chrome/90">
             Trip reports, small group expeditions and UW imaging workshops
           </p>
           <h1 className="mt-4 max-w-4xl font-display text-4xl font-extrabold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
