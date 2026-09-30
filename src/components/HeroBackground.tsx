@@ -86,8 +86,8 @@ export function HeroBackground() {
       })}
 
       {/* Scrim stack for WCAG-ish white type over underwater frames */}
-      <div className="absolute inset-0 bg-black/55" />
-      <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/45 to-black/75" />
+      <div className="absolute inset-0 bg-black/40" />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/55 via-black/25 to-black/50" />
     </div>
   );
 }
