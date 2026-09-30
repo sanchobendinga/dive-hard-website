@@ -71,7 +71,7 @@ export function HeroBackground() {
             fill
             sizes="100vw"
             priority={i === 0}
-            quality={85}
+            unoptimized
             className="object-cover object-center"
             style={{
               opacity: isActive ? 1 : 0,
