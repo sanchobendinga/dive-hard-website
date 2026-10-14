@@ -5,7 +5,7 @@ import { Logo } from "./Logo";
 export function Footer() {
   return (
     <footer className="border-t border-border bg-background">
-      <div className="mx-auto grid max-w-6xl gap-10 px-4 py-14 sm:px-6 md:grid-cols-[1.4fr_1fr_1fr]">
+      <div className="mx-auto grid max-w-6xl gap-10 px-4 py-14 sm:px-6 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
         <div className="space-y-4">
           <Logo size="sm" />
         </div>
@@ -28,6 +28,24 @@ export function Footer() {
                 Merch
               </Link>
             </li>
+          </ul>
+        </div>
+
+        <div>
+          <p className="section-eyebrow mb-4">Policies</p>
+          <ul className="space-y-2 text-sm text-chrome">
+            {[
+              ["/policies/shipping", "Shipping"],
+              ["/policies/returns-refunds", "Returns & Refunds"],
+              ["/policies/terms", "Terms"],
+              ["/policies/privacy", "Privacy"],
+            ].map(([href, label]) => (
+              <li key={href}>
+                <Link href={href} className="focus-ring hover:text-foreground">
+                  {label}
+                </Link>
+              </li>
+            ))}
           </ul>
         </div>
 
