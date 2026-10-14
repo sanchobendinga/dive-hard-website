@@ -40,7 +40,7 @@ Homepage Watch order (exact YouTube IDs):
 
 ## Brand
 
-- Wordmark: **DIVE HARD.** (SVG/text in header; PNG at `public/brand/logo-dive-hard.png`)
+- Wordmark: **DIVE HARD** (no period). Official vector: `public/brand/divehard-logo-white.svg` (site) and `public/brand/divehard-logo-black.svg`.
 - Palette: black / white chrome, deep navy, turquoise–teal
 - Channels: [YouTube @DiveHard](https://www.youtube.com/@DiveHard) · [Instagram @kabirteja](https://www.instagram.com/kabirteja/) · `divehardcreative@gmail.com`
 
