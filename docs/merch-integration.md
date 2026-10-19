@@ -47,3 +47,12 @@ Responses cached 5 min (`revalidate: 300`, tag `shopify-products`). Next steps w
 - [ ] 3PL confirmation (Shipmaster?) and Printful account
 - [ ] Licensed or own product photography (current robe photos are brand/retailer images, placeholder only; YETI and tee photos missing)
 - [ ] Legal review of the four policy drafts
+
+## Dive Hard Dryrobe product page (`/merch/dive-hard-dryrobe`)
+- All copy, numbers and images come from `src/lib/merch/dryrobe-collab.ts` (`DRYROBE_COLLAB`).
+- `title`: default "Dive Hard Dryrobe Advance"; switch to "dryrobe × DIVEHARD" only after Dryrobe approves co-branding.
+- `chestOption`: `"F1"` | `"F2"` swaps the front and chest images and copy. Preview builds can override it with build env `DRYROBE_CHEST_OPTION=F2`.
+- `pricing`: `wholesaleRobe`, `embroideryPerRobe`, `setupFeeTotal` / `batchSize`, `inboundShippingPerRobe`, `markup`. The total is derived, never typed in. `provisional: true` labels it.
+- `showDraftNotice`: draft banner + `noindex`. Turn off for launch.
+- Images are clean web renders of Desi's mockups (`/workspace/robe-mockups/webbi-render/render_web.py`). No Dryrobe photography is used; the old Dryrobe retailer photos were removed.
+- Order CTA is a newsletter signup (`source: "dryrobe-preorder"`). No cart or payment.

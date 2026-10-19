@@ -4,10 +4,14 @@ import { notFound } from "next/navigation";
 import { ProductGallery } from "@/components/merch/ProductGallery";
 import { ProductPurchase } from "@/components/merch/ProductPurchase";
 import { getMerchProvider } from "@/lib/merch";
+import { DRYROBE_COLLAB } from "@/lib/merch/dryrobe-collab";
+
+const DEDICATED = new Set<string>([DRYROBE_COLLAB.handle]);
 
 export async function generateStaticParams() {
   const products = await getMerchProvider().getProducts();
-  return products.map((p) => ({ handle: p.handle }));
+  // Products with a dedicated static route are rendered there, not here.
+  return products.filter((p) => !DEDICATED.has(p.handle)).map((p) => ({ handle: p.handle }));
 }
 
 export async function generateMetadata({ params }: PageProps<"/merch/[handle]">): Promise<Metadata> {

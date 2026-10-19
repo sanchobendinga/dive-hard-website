@@ -10,10 +10,10 @@ export function ProductCard({ product }: { product: Product }) {
     ? `${formatMoney(min)} – ${formatMoney(max)}` : formatMoney(min);
   return (
     <Link href={`/merch/${product.handle}`} className="focus-ring group block">
-      <div className="relative aspect-[4/5] overflow-hidden border border-border bg-card">
+      <div className="relative aspect-[4/5] overflow-hidden border border-border bg-card" style={img?.matte ? { background: img.matte } : undefined}>
         {img && (
           <Image src={img.url} alt={img.alt} fill sizes="(min-width:1024px) 33vw, (min-width:640px) 50vw, 100vw"
-            className={`object-cover grayscale transition duration-500 group-hover:scale-[1.03] group-hover:grayscale-0 ${img.placeholder ? "opacity-80" : ""}`} />
+            className={`${img.fit === "contain" ? "object-contain" : "object-cover"} grayscale transition duration-500 group-hover:scale-[1.03] group-hover:grayscale-0 ${img.placeholder ? "opacity-80" : ""}`} />
         )}
         {product.status === "draft" && (
           <span className="absolute left-3 top-3 border border-border bg-black/70 px-2 py-1 text-[10px] font-semibold uppercase tracking-[0.2em] text-chrome">Draft</span>

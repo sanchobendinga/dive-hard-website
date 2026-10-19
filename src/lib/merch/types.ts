@@ -5,7 +5,11 @@ export type Money = {
   currencyCode: string;
 };
 
-export type MerchImage = { url: string; alt: string; width: number; height: number; placeholder?: boolean };
+export type MerchImage = {
+  url: string; alt: string; width: number; height: number; placeholder?: boolean;
+  /** "contain" keeps the full frame (no crop) in fixed-ratio cards; `matte` fills the letterbox. */
+  fit?: "cover" | "contain"; matte?: string;
+};
 
 export type ProductOption = { name: string; values: string[] };
 

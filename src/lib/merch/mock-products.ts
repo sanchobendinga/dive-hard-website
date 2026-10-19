@@ -1,9 +1,10 @@
+import { DRYROBE_COLLAB, formatMm, priceMoney } from "./dryrobe-collab";
 import type { MerchImage, Money, Product, ProductOption, ProductVariant } from "./types";
 
 /**
  * DRAFT mock catalogue. Specs/prices come only from /workspace/research/{robes,yeti,tees}.md.
- * Anything not in the research is null/TBD. Robe photos are brand/retailer images used as
- * placeholders only; replace with licensed or own photography before launch.
+ * Anything not in the research is null/TBD. Gill/Frostfire photos are brand/retailer images used as
+ * placeholders only; the Dive Hard Dryrobe uses mockups only (no Dryrobe photos); replace with licensed or own photography before launch.
  */
 const usd = (amount: string | null): Money => ({ amount, currencyCode: "USD" });
 const TBD = "TBD";
@@ -44,27 +45,20 @@ const colorTBD: ProductOption = { name: "Color", values: [`${TBD} (colors not co
 
 export const MOCK_PRODUCTS: Product[] = [
   product({
-    handle: "dryrobe-advance-long-sleeve",
-    title: "Dryrobe Advance Long Sleeve",
+    // Dedicated page: /merch/dive-hard-dryrobe (config in ./dryrobe-collab.ts). This entry feeds the /merch grid.
+    handle: DRYROBE_COLLAB.handle,
+    title: DRYROBE_COLLAB.title,
     vendor: "dryrobe",
     category: "Robes",
-    description: "Full-length changing robe for cold surface intervals. Recycled synthetic lambswool lining, judged very warm and fast-drying. Dive Hard co-branded via dryrobe's official custom programme (pending).",
-    options: [sizeTBD, colorTBD],
-    priceFor: () => usd("220.00"),
-    images: [
-      img("dryrobe-advance-ls-1", "Dryrobe Advance Long Sleeve, product view", 1103, 1282),
-      img("dryrobe-advance-ls-2", "Dryrobe Advance Long Sleeve, alternate view", 1103, 1282),
-      img("dryrobe-advance-ls-3", "Dryrobe Advance, product view", 1312, 1636),
-    ],
+    description: `${DRYROBE_COLLAB.base} with white Dive Hard embroidery. ${formatMm(DRYROBE_COLLAB.waterproofMm)} waterproof. Limited first batch, pre-order at cost.`,
+    options: [sizeTBD],
+    priceFor: () => priceMoney(),
+    images: [DRYROBE_COLLAB.images[DRYROBE_COLLAB.chestOption].front],
     specs: [
-      { label: "Length", value: "Full-length changing robe", source: "robes.md [2][3]" },
-      { label: "Waterproof", value: "25,000 mm per product page; 10,000 mm also cited. Conflicting, confirm with dryrobe", source: "robes.md [1][2][5]" },
-      { label: "Lining", value: "Recycled synthetic lambswool", source: "robes.md [3]" },
-      { label: "Weight", value: "1.3 kg", source: "robes.md [3]" },
-      { label: "Guarantee", value: "3-year Performance Guarantee", source: "robes.md [1]" },
-      { label: "Fit note", value: "Runs large", source: "robes.md [3]" },
+      { label: "Waterproof", value: formatMm(DRYROBE_COLLAB.waterproofMm), source: "Dryrobe (email)" },
+      ...DRYROBE_COLLAB.specs,
     ],
-    notes: ["Price is the $220 brief/custom figure (MOQ 5) from research, not a set retail price.", "DRYROBE is a registered trademark; retail resale needs stockist approval (orders@dryrobe.com)."],
+    notes: ["Mockup imagery (Desi). Co-branding, chest option (F1/F2) and price still provisional."],
   }),
   product({
     handle: "gill-aqua-parka",
@@ -100,7 +94,7 @@ export const MOCK_PRODUCTS: Product[] = [
       img("frostfire-moonwrap-pro-2", "Frostfire Moonwrap Pro, lifestyle view", 1080, 1080),
     ],
     specs: [
-      { label: "Waterproof", value: "20,000 mm, 10k breathable", source: "robes.md [10]" },
+      { label: "Waterproof", value: "20,000 mm, breathable", source: "robes.md [10]" },
       { label: "Lining", value: "Shahtoosh fleece", source: "robes.md [10]" },
       { label: "Weight", value: "~1 kg", source: "robes.md [11]" },
       { label: "Guarantee", value: "Lifetime waterproof guarantee", source: "robes.md [10]" },
