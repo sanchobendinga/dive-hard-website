@@ -41,10 +41,10 @@ export const metadata: Metadata = {
     description: SITE.description,
     images: [
       {
-        url: "/brand/channel-header.png",
+        url: "/brand/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Dive Hard channel header",
+        alt: "Dive Hard",
       },
     ],
   },
@@ -52,11 +52,15 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Dive Hard",
     description: SITE.description,
-    images: ["/brand/channel-header.png"],
+    images: ["/brand/og-image.png"],
   },
   icons: {
-    icon: "/brand/logo-dive-hard.svg",
-    apple: "/brand/avatar.jpg",
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/brand/monogram-dh.svg", type: "image/svg+xml" },
+      { url: "/brand/icon-512.png", type: "image/png", sizes: "512x512" },
+    ],
+    apple: "/brand/apple-icon.png",
   },
 };
 

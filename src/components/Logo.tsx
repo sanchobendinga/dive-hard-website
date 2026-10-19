@@ -1,7 +1,8 @@
 import Link from "next/link";
 
-/** Natural aspect ≈ 6.95:1 — size by height only; never stretch. */
-const ASPECT = "2953 / 425";
+/** Natural aspect of the traced vector: 1695.67 × 245.5 (≈ 6.91:1). */
+const W = 1695.67;
+const H = 245.5;
 
 type Props = {
   className?: string;
@@ -9,7 +10,7 @@ type Props = {
   size?: "sm" | "md" | "lg" | "hero";
 };
 
-/** Height-driven sizes; width follows aspect-ratio. */
+/** Height-driven sizes; width follows intrinsic aspect (w-auto). */
 const sizeClass: Record<NonNullable<Props["size"]>, string> = {
   sm: "h-5 sm:h-6",
   md: "h-7 sm:h-8",
@@ -17,31 +18,19 @@ const sizeClass: Record<NonNullable<Props["size"]>, string> = {
   hero: "h-10 sm:h-12 md:h-14",
 };
 
-/**
- * Renders Kabir's PNG wordmark as white letterforms on transparent.
- * Uses CSS mask (not SVG potrace, not filter:invert) so counters stay open
- * and no white plate can appear behind DIVE.
- */
+/** White vector wordmark (no period) on transparent. Never stretched. */
 export function Logo({ className = "", href = "/", size = "md" }: Props) {
   const mark = (
-    <span
-      role={href ? undefined : "img"}
-      aria-label={href ? undefined : "Dive Hard"}
+    // eslint-disable-next-line @next/next/no-img-element
+    <img
+      src="/brand/divehard-logo-white.svg"
+      width={W}
+      height={H}
+      alt={href ? "" : "Dive Hard"}
       aria-hidden={href ? true : undefined}
-      className={`block bg-white ${sizeClass[size]} ${className}`.trim()}
-      style={{
-        aspectRatio: ASPECT,
-        width: "auto",
-        maxWidth: size === "hero" ? "min(100%, 26rem)" : undefined,
-        WebkitMaskImage: "url(/brand/logo-dive-hard.png)",
-        maskImage: "url(/brand/logo-dive-hard.png)",
-        WebkitMaskSize: "contain",
-        maskSize: "contain",
-        WebkitMaskRepeat: "no-repeat",
-        maskRepeat: "no-repeat",
-        WebkitMaskPosition: "left center",
-        maskPosition: "left center",
-      }}
+      draggable={false}
+      className={`block w-auto max-w-full object-contain object-left ${sizeClass[size]} ${className}`.trim()}
+      style={size === "hero" ? { maxWidth: "min(100%, 26rem)" } : undefined}
     />
   );
 
@@ -51,7 +40,7 @@ export function Logo({ className = "", href = "/", size = "md" }: Props) {
     <Link
       href={href}
       className="focus-ring inline-flex items-center transition-opacity hover:opacity-80"
-      aria-label="Dive Hard home"
+      aria-label="Dive Hard"
     >
       {mark}
     </Link>

@@ -3,7 +3,8 @@ export const SITE = {
   tagline: "a resource and community for hardcore divers",
   description:
     "Trip reports, small group expeditions and UW imaging workshops.",
-  url: "https://divehard.film",
+  // Site origin (metadataBase, OG/Twitter, canonical). Change here for a custom domain.
+  url: "https://dive-hard-website.vercel.app",
   email: "divehardcreative@gmail.com",
   youtube: "https://www.youtube.com/@DiveHard",
   youtubeHandle: "@DiveHard",
